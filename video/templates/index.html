@@ -1,10 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
   <head>
       <meta charset="UTF-8">
+      <link rel="stylesheet" href="{% static 'css/index.css' %}">
       <title>TEST</title>
   </head>
   <body>
-    <h1>TEST</h1>
+    <video src="{% static 'video/test.mp4' %}" controls>
+      <p>Ваш браузер не поддерживает HTML5 видео. Используйте <a href="rabbit320.webm">ссылку на видео</a> для доступа.</p>
+    </video>
   </body>
 </html>
