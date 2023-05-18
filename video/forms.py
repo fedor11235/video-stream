@@ -1,7 +1,7 @@
 from django import forms
-from .models import Downloader
+from .models import Video
 
-class DownloadForm(forms.ModelForm):
+class UploadForm(forms.ModelForm):
   class Meta:
-    model = Downloader
-    fields = ['name', 'Dis', 'file']
+    model = Video
+    fields = ['title', 'description', 'image', 'file']

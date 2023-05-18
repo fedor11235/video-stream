@@ -1,23 +1,14 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="cache-control" content="no-cache">
-      <meta http-equiv="expires" content="0">
-      <link rel="stylesheet" href="{% static 'css/index1.css' %}">
-      <title>TEST</title>
-  </head>
-  <body>
-    <div class="download">
-      <form action="/video/download/" method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{ form.as_p}}
-          <div class="button_2">
-            <button type="submit">Добавить</button>
-          </div>
-      </form>
-      <a href="/video/">назад</a>
-    </div>
-  </body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="download">
+    <form action="/video/download/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p}}
+        <div class="button_2">
+          <button type="submit">Добавить</button>
+        </div>
+    </form>
+    <a href="/video/">назад</a>
+  </div>
+{% endblock content %}

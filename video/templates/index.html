@@ -1,17 +1,26 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="cache-control" content="no-cache">
-      <meta http-equiv="expires" content="0">
-      <link rel="stylesheet" href="{% static 'css/index1.css' %}">
-      <title>TEST</title>
-  </head>
-  <body>
-    <a href="/video/download/">загрузить видео</a>
-    <video src="{% static 'video/test.mp4' %}" controls>
-      <p>Ваш браузер не поддерживает HTML5 видео. Используйте <a href="{% static 'video/test.mp4' %}>ссылку на видео</a> для доступа.</p>
-    </video>
-  </body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+  <a href="/video/download/">загрузить видео</a>
+  {% comment %} <video src="{% static 'video/test.mp4' %}" controls>
+    <p>Ваш браузер не поддерживает HTML5 видео. Используйте <a href="{% static 'video/test.mp4' %}>ссылку на видео</a> для доступа.</p>
+  </video> {% endcomment %}
+  {% for video in video_list %}
+    <div class="post-masonry col-md-4 col-sm-6">
+      <div class="post-thumb">
+        <img src="{{ video.image.url }}" alt="">
+        <div class="title-over">
+          <h4>{{ video.title }}</h4>
+        </div>
+        <div class="post-hover text-center">
+          <div class="inside">
+            <i class="fa fa-plus"></i>
+            <span class="date">{{ video.create_at }}</span>
+            {% comment %} <h4><a href="{% url 'video' video.id %}">{{ video.title }}</a></h4> {% endcomment %}
+            <p>{{ video.description|slice:":100" }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock content %}
